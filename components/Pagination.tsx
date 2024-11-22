@@ -1,11 +1,6 @@
 import React from 'react';
+import { PaginationProps } from '@/types/PaginationInterface';
 
-interface PaginationProps {
-    currentPage: number;
-    totalItems: number;
-    itemsPerPage: number;
-    onPageChange: (page: number) => void;
-}
 
 const Pagination: React.FC<PaginationProps> = ({ currentPage, totalItems, itemsPerPage, onPageChange }) => {
     const totalPages = Math.ceil(totalItems / itemsPerPage);

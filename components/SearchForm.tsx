@@ -1,12 +1,5 @@
 import React from 'react';
-
-interface SearchFormProps {
-    searchQuery: string;
-    searchType: string;
-    setSearchQuery: (query: string) => void;
-    setSearchType: (type: string) => void;
-    onSearch: (query: string, type: string) => void;
-}
+import { SearchFormProps } from '@/types/SearchFormProps';
 
 const SearchForm: React.FC<SearchFormProps> = ({
     searchQuery,
@@ -23,7 +16,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex items-center space-x-4 mb-4">
+        <form onSubmit={handleSubmit} className="flex items-center space-x-4 mb-4 text-black">
             <input
                 type="text"
                 value={searchQuery}
