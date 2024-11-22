@@ -16,10 +16,10 @@ import { SearchResult, TrackDetails, ArtistDetails } from '@/types';
 
 export default function App() {
     const token = useSpotifyToken();
-    const [searchResults, setSearchResults] = useState<SearchResult[]>([]);  // Aquí definimos el tipo SearchResult
+    const [searchResults, setSearchResults] = useState<SearchResult[]>([]);  
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [searchType, setSearchType] = useState<string>('track');
-    const [selectedItem, setSelectedItem] = useState<TrackDetails | ArtistDetails | null>(null);  // Aquí definimos TrackDetails o ArtistDetails
+    const [selectedItem, setSelectedItem] = useState<TrackDetails | ArtistDetails | null>(null); 
     const [currentPage, setCurrentPage] = useState<number>(1);
     const itemsPerPage = 20;
 
@@ -31,7 +31,7 @@ export default function App() {
         }
     };
 
-    const handleItemClick = async (item: SearchResult) => {  // El tipo item es SearchResult
+    const handleItemClick = async (item: SearchResult) => {  
         if (token) {
             const details = await getDetails(token, searchType, item.id);
             setSelectedItem(details);
