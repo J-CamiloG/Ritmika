@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useSpotifyToken } from '../hooks/useSpotifyToken';
+import { useSpotifyToken } from '@/hooks/useSpotifyToken';
 import Sidebar from '@/components/Sidebar';
 import TopBar from '@/components/TopBar';
 import Advertisement from '@/components/Advertisement';
@@ -10,14 +10,16 @@ import SearchForm from '@/components/SearchForm';
 import SearchResults from '@/components/SearchResults';
 import SelectedItemDetails from '@/components/SelectedItemDetails';
 import Pagination from '@/components/Pagination';
-import { search, getDetails } from '../services/spotifyApi';
+import { search, getDetails } from '@/services/spotifyApi';
+import { SearchResult, TrackDetails, ArtistDetails } from '@/types';  
+
 
 export default function App() {
     const token = useSpotifyToken();
-    const [searchResults, setSearchResults] = useState<any[]>([]);
+    const [searchResults, setSearchResults] = useState<SearchResult[]>([]);  // Aquí definimos el tipo SearchResult
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [searchType, setSearchType] = useState<string>('track');
-    const [selectedItem, setSelectedItem] = useState<any>(null);
+    const [selectedItem, setSelectedItem] = useState<TrackDetails | ArtistDetails | null>(null);  // Aquí definimos TrackDetails o ArtistDetails
     const [currentPage, setCurrentPage] = useState<number>(1);
     const itemsPerPage = 20;
 
@@ -29,7 +31,7 @@ export default function App() {
         }
     };
 
-    const handleItemClick = async (item: any) => {
+    const handleItemClick = async (item: SearchResult) => {  // El tipo item es SearchResult
         if (token) {
             const details = await getDetails(token, searchType, item.id);
             setSelectedItem(details);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchFormProps } from '@/types/SearchFormProps';
+import { SearchFormProps } from '@/types';
 
 const SearchForm: React.FC<SearchFormProps> = ({
     searchQuery,

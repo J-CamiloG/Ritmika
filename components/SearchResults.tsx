@@ -1,9 +1,13 @@
 import React from 'react';
 import { Music, User, Disc } from 'lucide-react';
-import { SearchResultsProps } from '@/types/SearchResultsTypes';
+import { SearchResultsProps } from '@/types';
 import { normalizeResult } from '@/utils/normalizeResults';
 
 const SearchResults: React.FC<SearchResultsProps> = ({ results, onItemClick }) => {
+    if (!results || results.length === 0) {
+        return <div>No se encontraron resultados.</div>;
+    }
+
     const normalizedResults = results.map(normalizeResult);
 
     return (
@@ -12,6 +16,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results, onItemClick }) =
                 <div
                     key={result.id}
                     onClick={() => onItemClick(result)}
+
                     className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer group"
                 >
                     <div className="relative">

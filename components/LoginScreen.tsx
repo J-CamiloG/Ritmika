@@ -12,7 +12,6 @@ export default function LoginScreen() {
                     <AuthButton 
                         clientId={process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID!} 
                         redirectUri={process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI!}
-                        className="w-full bg-[#1DB954] text-white font-bold py-4 px-6 rounded-full hover:bg-[#1ed760] transition-colors duration-200 flex items-center justify-center gap-2"
                     />
                 </div>
             </div>

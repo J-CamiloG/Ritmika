@@ -1,6 +1,6 @@
 import React from 'react';
-import { Heart, Share2, Shuffle, Repeat, SkipBack, Play, SkipForward } from 'lucide-react';
-import { SelectedItemDetailsProps } from '@/types/SelectedItemDetailsProps';
+import { Heart, Share2 } from 'lucide-react';
+import { SelectedItemDetailsProps, Artist } from '@/types';
 
 
 const SelectedItemDetails: React.FC<SelectedItemDetailsProps> = ({ item, type, onBack }) => {
@@ -41,7 +41,7 @@ const SelectedItemDetails: React.FC<SelectedItemDetailsProps> = ({ item, type, o
                             {isArtist ? `${item?.followers?.total || 0} followers` :  
                             isAlbum ? `Released: ${item?.release_date || 'Unknown date'}` :
 
-                            item?.artists?.map((artist: any) => artist.name).join(', ') || 'Unknown Artist'}
+                            item?.artists?.map((artist: Artist) => artist.name).join(', ') || 'Unknown Artist'}
                         </p>
                     </div>
 

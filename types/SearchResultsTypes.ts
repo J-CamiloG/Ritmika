@@ -38,4 +38,21 @@ export interface NormalizedResult {
     imageUrl: string;
     subtitle: string;
     type: 'song' | 'artist' | 'unknown';
+    images: Image[];
+}
+
+export interface TrackDetails {
+    id: string;
+    name: string;
+    album: Album;
+    artists: Artist[];
+    previewUrl: string;  
+    
+}
+
+export interface ArtistDetails {
+    id: string;
+    name: string;
+    images: Image[];
+    biography: string;  
 }

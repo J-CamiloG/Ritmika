@@ -4,6 +4,7 @@ export function useSpotifyToken() {
     const [token, setToken] = useState<string | null>(null);
 
     useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const hash = window.location.hash.substring(1).split('&').reduce((acc: any, item) => {
             const parts = item.split('=');
             acc[parts[0]] = decodeURIComponent(parts[1]);
