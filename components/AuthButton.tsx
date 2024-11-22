@@ -6,7 +6,7 @@ export default function AuthButton({ clientId, redirectUri }: { clientId: string
     return (
         <button
             onClick={handleLogin}
-            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded text-center"
         >
             Login with Spotify
         </button>

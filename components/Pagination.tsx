@@ -12,7 +12,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalItems, itemsP
     };
 
     return (
-        <div className="flex justify-center mt-4 space-x-2">
+        <div className="flex justify-center mt-4 space-x-2 text-black">
             <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"

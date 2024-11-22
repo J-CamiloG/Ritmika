@@ -1,14 +1,18 @@
 'use client';
+
 import { useState } from 'react';
 import { useSpotifyToken } from '../hooks/useSpotifyToken';
-import AuthButton from '@/components/AuthButton';
+import Sidebar from '@/components/Sidebar';
+import TopBar from '@/components/TopBar';
+import Advertisement from '@/components/Advertisement';
+import LoginScreen from '@/components/LoginScreen';
 import SearchForm from '@/components/SearchForm';
 import SearchResults from '@/components/SearchResults';
 import SelectedItemDetails from '@/components/SelectedItemDetails';
 import Pagination from '@/components/Pagination';
 import { search, getDetails } from '../services/spotifyApi';
 
-export default function Home() {
+export default function App() {
     const token = useSpotifyToken();
     const [searchResults, setSearchResults] = useState<any[]>([]);
     const [searchQuery, setSearchQuery] = useState<string>('');
@@ -32,13 +36,17 @@ export default function Home() {
         }
     };
 
+    if (!token) {
+        return <LoginScreen />;
+    }
+
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-3xl font-bold mb-4">Spotify Search</h1>
-            {!token ? (
-                <AuthButton clientId={process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID!} redirectUri={process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI!} />
-            ) : (
-                <>
+        <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
+            <div className="flex">
+                <Sidebar />
+                <div className="ml-64 flex-grow p-8">
+                    <TopBar />
+                    <Advertisement />
                     <SearchForm
                         searchQuery={searchQuery}
                         searchType={searchType}
@@ -69,8 +77,8 @@ export default function Home() {
                             />
                         </>
                     )}
-                </>
-            )}
+                </div>
+            </div>
         </div>
     );
 }

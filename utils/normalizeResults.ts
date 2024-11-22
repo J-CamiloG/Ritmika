@@ -1,6 +1,16 @@
 import { SearchResult, NormalizedResult } from '../types/SearchResultsTypes';
 
-export const normalizeResult = (result: SearchResult): NormalizedResult => {
+export const normalizeResult = (result: SearchResult | null | undefined): NormalizedResult => {
+    if (!result) {
+        return {
+            id: 'no-id',
+            name: 'Sin nombre',
+            imageUrl: '/placeholder.jpg',
+            subtitle: 'Desconocido',
+            type: 'unknown',
+        };
+    }
+
     if ('album' in result) { 
         return {
             id: result.id,
@@ -18,6 +28,7 @@ export const normalizeResult = (result: SearchResult): NormalizedResult => {
             type: 'artist',
         };
     }
+
     return {
         id: result.id || 'no-id',
         name: result.name || 'Sin nombre',
