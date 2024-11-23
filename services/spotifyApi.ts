@@ -1,5 +1,5 @@
 const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID ?? 'client';
-const redirectUri = 'https://ritmika.vercel.app';
+const redirectUri = 'http://localhost:3000';
 
 export async function getAccessToken(code: string): Promise<string> {
     const response = await fetch('https://accounts.spotify.com/api/token', {
@@ -17,6 +17,8 @@ export async function getAccessToken(code: string): Promise<string> {
     const data = await response.json();
     return data.access_token;
 }
+
+
 
 export async function search(token: string, query: string, type: string) {
     const response = await fetch(
